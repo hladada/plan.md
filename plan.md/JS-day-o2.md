@@ -74,3 +74,13 @@ if (score >= 90){
     console.log("不及格")；
 }
 ```
+
+## 任务六：三元运算符号(if简写)
+
+语法:条件？满足执行 ：不满足执行
+
+```js
+let age = 19;
+let res = age >= 18? "成年"："未成年"；
+console.log(res);
+``` 
