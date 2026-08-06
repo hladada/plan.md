@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>猜数字游戏</title>
+    <style>
+        /* 极简CSS，只做基础排版 */
+        body {
+            font-size: 18px;
+            padding: 30px;
+        }
+        input, button {
+            font-size: 18px;
+            padding: 4px;
+        }
+        #msg {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h3>猜数字游戏</h3>
+    <p>请输入一个0-10之间的整数</p>
+    <input type="text" id="numInput">
+    <button id="submitBtn">提交</button>
+    <div id="msg"></div>
+
+    <script>
+        // 生成0~10随机数
+        const secretNumber = Math.floor(Math.random() * 11);
+
+        const input = document.getElementById('numInput');
+        const btn = document.getElementById('submitBtn');
+        const msgBox = document.getElementById('msg');
+
+        function check() {
+            const val = input.value.trim();
+            // 判断是否为整数
+            if (!/^\d+$/.test(val)) {
+                msgBox.innerText = "输入无效，请输入一个整数！";
+                return;
+            }
+            const guess = parseInt(val);
+            if (guess < 0 || guess > 10) {
+                msgBox.innerText = "输入超出范围，请输入0-10之间的整数！";
+                return;
+            }
+
+            if (guess > secretNumber) {
+                msgBox.innerText = "太大了！再猜一次吧！";
+            } else if (guess < secretNumber) {
+                msgBox.innerText = "太小了！再猜一次吧！";
+            } else {
+                msgBox.innerText = "猜对了！";
+                btn.disabled = true;
+                input.disabled = true;
+            }
+        }
+
+        // 点击按钮触发
+        btn.onclick = check;
+        // 回车触发
+        input.onkeydown = function(e) {
+            if (e.key === 'Enter') check();
+        }
+    </script>
+</body>
+</html>
