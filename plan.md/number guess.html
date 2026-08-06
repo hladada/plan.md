@@ -10,10 +10,14 @@
             justify-content: center;  /* 水平居中 */
             align-items: center;      /* 垂直居中 */
             margin: 0;
-            
             font-size: 18px;
             padding: 30px;
             background-color: aliceblue;
+        }
+        .box{
+            display: flex ;
+            flex-direction: column;
+            gap:10px;
         }
         input, button {
             font-size: 18px;
@@ -27,12 +31,15 @@
     </style>
 </head>
 <body>
+<div class="box">
     <h3>猜数字游戏</h3>
     <p>请输入一个0-10之间的整数</p>
     <input type="text" id="numInput">
     <button id="submitBtn">提交</button>
     <div id="msg"></div>
-
+</div>
+</body>
+    
     <script>
         // 生成0~10随机数
         const secretNumber = Math.floor(Math.random() * 11);
